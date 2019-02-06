@@ -9,9 +9,8 @@ export const getCategories = () => dispatch => {
             dispatch({
                 type: GET_CATEGORIES,
                 payload: res.data
-            })
-            
-        )
+            })  
+        ).catch(err => console.log(err))
 }
 
 
@@ -23,5 +22,5 @@ export const getJoke = (category) => dispatch => {
                 type: GET_JOKE,
                 payload: res.data
             })
-        )
+        ).catch(err => console.log(err))
 }
