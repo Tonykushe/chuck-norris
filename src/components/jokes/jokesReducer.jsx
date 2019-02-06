@@ -1,7 +1,8 @@
-import { GET_CATEGORIES } from "./jokesConstants";
+import { GET_CATEGORIES, GET_JOKE } from "./jokesConstants";
 
 const initialState = {
-    categories: {}
+    categories: [],
+    joke: {}
 }
 
 
@@ -11,6 +12,11 @@ const jokesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: action.payload
+            }
+        case GET_JOKE:
+            return {
+                ...state,
+                joke: action.payload
             }
             
         default:

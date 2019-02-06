@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { getCategories } from "../jokesActions";
 import CategoryItem from './CategoryItem'
 
@@ -20,11 +21,11 @@ class Categories extends Component {
 
     render() {
         const { categories } = this.props.jokes
+        
         let categoryItem;
-
         if (categories.length > 0) {
             categoryItem = categories.map((category, index) => (
-                <CategoryItem key={index} category={category}/>
+                <CategoryItem key={index} category={category} />
             ))
         } else {
             categoryItem = <h1>No categories found</h1>
@@ -35,7 +36,7 @@ class Categories extends Component {
             <div className="categories">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
+                        <div className="col-md-4 m-auto">
                             <h1>Choose a category</h1>
                             {categoryItem}
                         </div>
@@ -45,5 +46,12 @@ class Categories extends Component {
         );
     }
 }
+
+Categories.propTypes = {
+    jokes: PropTypes.object.isRequired,
+    getCategories: PropTypes.func.isRequired
+};
+
+
 
 export default connect(mapState, actions)(Categories);
